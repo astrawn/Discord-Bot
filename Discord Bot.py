@@ -33,6 +33,13 @@ async def on_message(message):
         except:
             msg = 'Search failed. Please contact an administrator to report this issue.'.format(message)
             await message.channel.send(msg)
+    elif message.content.startswith('!def'):
+        try:
+            query1 = message.content[5:-1]
+            query = query1 + ' definition'
+            for j in search(query, tld = "com", num=1, stop=1, pause=2):
+                msg = j.format(message)
+                await message.channel.send(msg)
     elif message.content.startswith('!rng'):
         msg = str(random.randint(1, 101)).format(message)
         await message.channel.send(msg)
